@@ -8,7 +8,7 @@
 
 (function($){
 	
-	var defaultHandlers = ['swfupload_loaded_handler','file_queued_handler','file_queue_error_handler','file_dialog_start_handler','file_dialog_complete_handler','upload_start_handler','upload_progress_handler','upload_error_handler','upload_success_handler','upload_complete_handler'];
+	var defaultHandlers = ['swfupload_loaded_handler','file_queued_handler','file_queue_error_handler','file_dialog_start_handler','file_dialog_complete_handler','upload_start_handler','upload_progress_handler','upload_error_handler','upload_success_handler','upload_complete_handler','queue_complete_handler'];
 	var additionalHandlers = [];
 	
 	$.fn.swfupload = function(){
@@ -21,7 +21,8 @@
 					var settings = args[0];
 					var $magicUploadControl = $(this);
 					var handlers = [];
-					$.merge(handlers, defaultHandlers, additionalHandlers);
+					$.merge(handlers, defaultHandlers);
+					$.merge(handlers, additionalHandlers);
 					$.each(handlers, function(i, v){
 						var eventName = v.replace(/_handler$/, '').replace(/_([a-z])/g, function(){ return arguments[1].toUpperCase(); });
 						settings[v] = function() {
@@ -47,8 +48,8 @@
 			if (arguments.length === 0) {
 				return additionalHandlers.slice();
 			} else {
-				$(arguments).each(function(){
-					$.merge(additionalHandlers, $.makeArray(this));
+				$(arguments).each(function(i, v){
+					$.merge(additionalHandlers, $.makeArray(v));
 				});
 			}
 		},

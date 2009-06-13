@@ -8,6 +8,8 @@
 <script type="text/javascript" src="../src/jquery.swfupload.js"></script>
 <script type="text/javascript">
 
+$.swfupload.additionalHandlers('something');
+
 $(function(){
 	$('#swfupload-control').swfupload({
 		upload_url: "upload.php",
@@ -54,7 +56,7 @@ $(function(){
 			// upload has completed, lets try the next one in the queue
 			$(this).swfupload('startUpload');
 		})
-		.bind('uploadError', function(file, errorCode, message){
+		.bind('uploadError', function(event, file, errorCode, message){
 			$('#log').append('<li>Upload error - '+message+'</li>');
 		});
 	

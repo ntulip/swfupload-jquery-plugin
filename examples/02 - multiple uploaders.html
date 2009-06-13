@@ -60,7 +60,7 @@ $(function(){
 				$(this).swfupload('startUpload');
 			}
 		},
-		uploadError: function(file, errorCode, message){
+		uploadError: function(event, file, errorCode, message){
 			$('.log', this).append('<li>Upload error - '+message+'</li>');
 		}
 	};

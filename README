@@ -6,7 +6,7 @@ Copyright (c) 2009 Adam Royle. Licensed under the MIT license.
 Overview
 --------
 
-A jQuery plugin that makes working with SWFUpload event easier.
+A jQuery plugin that makes working with SWFUpload even easier.
 
 Features include:
 	- jQuery-style instantiation
@@ -65,4 +65,6 @@ uploadStart (event, file)
 uploadProgress (event, file, bytesLoaded)
 uploadSuccess (event, file, serverData)
 uploadComplete (event, file)
-uploadError (file, errorCode, message)
+uploadError (event, file, errorCode, message)
+// event from swfupload.queue.js
+queueComplete (event, uploadCount)
